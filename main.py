@@ -1,5 +1,5 @@
 from itertools import combinations
-
+import math
 # path to the local version of the Advent of Code day 1 input.
 path_to_txt_file = 'day1Aoc.txt'
 
@@ -62,25 +62,23 @@ def sum_checker_3(lst):
     for i in lst_combo:     # Iterate through all possible 3-combinations
         if sum(i) == 2020:  # If the sum of a combination is 2020
             return i
-val = sum_checker_3(list_of_inputs_as_ints)
-
-other_list = [979, 366, 1456, 299, 675, 1721]
-
 
 
 # val = sum_checker_3(lst_200)
-print(val)
 def product_of_sums(lst):
     """Multiplies the two nums that sum to 2020"""
     return lst[0] * lst[1]
+
 
 def product_of_sums_3(lst):
     """Multiplies the two nums that sum to 2020"""
     return lst[0] * lst[1] * lst[2]
 
-result_of_day1AoC = product_of_sums_3(val)
-print(result_of_day1AoC)
 
+val_part_2 = sum_checker_3(list_of_inputs_as_ints)
+result_1 = math.prod(sum_checker(list_of_inputs_as_ints))
+result_2 = math.prod(val_part_2)
+print(result_1, result_2)
 
 # day_1_input.readline() # this will read line by line. every execution will read the next line.
 
