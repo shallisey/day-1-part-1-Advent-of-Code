@@ -1,12 +1,11 @@
+from itertools import combinations
+
 # path to the local version of the Advent of Code day 1 input.
-path_to_txt_file = '/Users/seanhallisey/PycharmProjects/day1 AdventofCode/day1Aoc.txt'
+path_to_txt_file = 'day1Aoc.txt'
 
 # open local file with Advent of Code day 1 input.
 day_1_input = open(path_to_txt_file, 'r')
 
-# read the open file
-# this will return everything in the file as a single string
-# day_1_input.read()
 
 # reads file and creates a list.
 list_of_inputs_as_strs = day_1_input.read().split()
@@ -19,8 +18,6 @@ for i in list_of_inputs_as_strs:
     list_of_inputs_as_ints.append(int(i))
 
 # print(list_of_inputs_as_ints)
-og_list = [1721, 979, 366, 299, 1456]
-other_list = [979, 366, 1456, 299, 1721]
 
 # Check if any of the numbers in the list sum to 2020
 def sum_checker(lst):
@@ -59,18 +56,29 @@ def sum_checker(lst):
             sum_checker(lst)
 
 
-        # sum_checker(lst.pop())
+def sum_checker_3(lst):
+    """This function will find 3 numbers that sum to 2020"""
+    lst_combo = combinations(lst, 3)    # Creates all possible 3-combinations of all numbers
+    for i in lst_combo:     # Iterate through all possible 3-combinations
+        if sum(i) == 2020:  # If the sum of a combination is 2020
+            return i
+val = sum_checker_3(list_of_inputs_as_ints)
 
-# print(sum_checker(other_list))
-# print(sum_checker(og_list))
+other_list = [979, 366, 1456, 299, 675, 1721]
 
-val = sum_checker(list_of_inputs_as_ints)
+
+
+# val = sum_checker_3(lst_200)
 print(val)
 def product_of_sums(lst):
     """Multiplies the two nums that sum to 2020"""
     return lst[0] * lst[1]
 
-result_of_day1AoC = product_of_sums(val)
+def product_of_sums_3(lst):
+    """Multiplies the two nums that sum to 2020"""
+    return lst[0] * lst[1] * lst[2]
+
+result_of_day1AoC = product_of_sums_3(val)
 print(result_of_day1AoC)
 
 
